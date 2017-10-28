@@ -11,7 +11,7 @@ module VideoPlayer
     DefaultAutoPlay = true
 
     YouTubeRegex  = /\A(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/i
-    VimeoRegex    = /\Ahttps?:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/i
+    VimeoRegex    = /\Ahttps?:\/\/(www.)?(vimeo\.com\/channels\/staffpicks|vimeo\.com)\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/i
     IzleseneRegex = /\Ahttp:\/\/(?:.*?)\izlesene\.com\/video\/([\w\-\.]+[^#?\s]+)\/(.*)?$/i
     WistiaRegex   = /\Ahttps?:\/\/(.+)?(wistia.com|wi.st)\/(medias|embed)\/([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/i
 
@@ -29,7 +29,7 @@ module VideoPlayer
       when matchdata = url.match(YouTubeRegex)
         youtube_embed(matchdata[4])
       when matchdata = url.match(VimeoRegex)
-        vimeo_embed(matchdata[2])
+        vimeo_embed(matchdata[3])
       when matchdata = url.match(IzleseneRegex)
         izlesene_embed(matchdata[2])
       when matchdata = url.match(WistiaRegex)
